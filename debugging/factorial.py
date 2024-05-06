@@ -8,10 +8,5 @@ def factorial(n):
         n = n - 1
     return result
 
-# Exclude the first element which is the script name
-args = sys.argv[1:]
-if len(args) > 0:
-    f = factorial(int(args[0]))
-    print(f)
-else:
-    print("No arguments provided")
+f = factorial(int(sys.argv[1]))
+print(f)
