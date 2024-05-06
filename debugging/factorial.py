@@ -8,5 +8,6 @@ def factorial(n):
         n = n - 1
     return result
 
-f = factorial(int(sys.argv[1]))
-print(f)
+args = sys.argv[1:]
+for arg in args:
+    print(arg)
