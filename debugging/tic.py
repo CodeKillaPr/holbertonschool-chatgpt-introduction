@@ -23,34 +23,20 @@ def check_winner(board):
 def tic_tac_toe():
     board = [[" "]*3 for _ in range(3)]
     player = "X"
-    moves = 0
-    while not check_winner(board) and moves < 9:
-        print("\nCoordinates for the board:")
-        print(" 0 | 1 | 2 ")
-        print("-----------")
-        print(" 3 | 4 | 5 ")
-        print("-----------")
-        print(" 6 | 7 | 8 ")
+    while not check_winner(board):
         print_board(board)
-        try:
-            move = int(input("\nEnter a position (0-8) for player " + player + ": "))
-            if move < 0 or move > 8:
-                raise ValueError("Position out of range.")
-        except ValueError:
-            print("Invalid input. Please enter a number between 0 and 8.")
-            continue
-        row = move // 3
-        col = move % 3
+        row = int(input("Enter row (0, 1, or 2) for player " + player + ": "))
+        col = int(input("Enter column (0, 1, or 2) for player " + player + ": "))
         if board[row][col] == " ":
             board[row][col] = player
-            moves += 1
-            player = "O" if player == "X" else "X"
+            if player == "X":
+                player = "O"
+            else:
+                player = "X"
         else:
             print("That spot is already taken! Try again.")
+
     print_board(board)
-    if check_winner(board):
-        print("Player " + player + " wins!")
-    else:
-        print("Game Over. It's a tie!")
+    print("Player " + player + " wins!")
 
 tic_tac_toe()
